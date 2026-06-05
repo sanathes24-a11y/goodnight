@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>🌙 Love Journey · 3 Pages for Shutraaa ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', 'Quicksand', system-ui, -apple-system, 'Comic Neue', sans-serif;
+            background: #0a0a1a;
+            color: #f3e9ff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* pages container */
+        .pages-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+        }
+
+        /* background variations */
+        .page-1 { background: linear-gradient(135deg, #0c0e27, #17193b); }
+        .page-2 { background: radial-gradient(circle at 30% 20%, #0c0f2c, #03041a); }
+        .page-3 { background: linear-gradient(125deg, #1c1b3e, #0b0927); }
+
+        /* story cards */
+        .story-card {
+            max-width: 750px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 3rem;
+            padding: 1.8rem 2rem;
+            border: 1px solid rgba(255, 220, 245, 0.6);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            margin-bottom: 1.8rem;
+        }
+
+        .story-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(120deg, #FFE0B5, #FFB8D0, #D9B0FF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .story-card p {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* photo gallery */
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        .photo-item {
+            background: rgba(255, 240, 250, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 1.8rem;
+            padding: 0.8rem;
+            width: 240px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 200, 220, 0.6);
+        }
+        .photo-item:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 240, 250, 0.25);
+        }
+        .photo-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1.2rem;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+        }
+        .photo-caption {
+            margin-top: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #FFE2C0;
+        }
+        .photo-note {
+            font-size: 0.75rem;
+            background: rgba(0,0,0,0.4);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+        }
+
+        /* animated moon & stars (page 2) */
+        .cosmic-playground {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 280px;
+            margin: 1rem auto;
+            overflow: hidden;
+        }
+        .moon-glow {
+            position: absolute;
+            top: 35%;
+            left: 38%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #FFFACD, #FFE3A3);
+            border-radius: 50%;
+            box-shadow: 0 0 35px #FFD58C, 0 0 18px #FFB347;
+            animation: floatMoon 4s infinite ease-in-out;
+        }
+        .moon-glow::after {
+            content: "🌙";
+            position: absolute;
+            font-size: 3rem;
+            top: 22%;
+            left: 28%;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+        @keyframes floatMoon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        .star-twinkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: twinkleAnim 2s infinite alternate;
+        }
+        @keyframes twinkleAnim {
+            0% { opacity: 0.2; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* final message box (page 3) */
+        .final-box {
+            max-width: 750px;
+            background: rgba(10, 5, 30, 0.75);
+            backdrop-filter: blur(20px);
+            border-radius: 4rem;
+            padding: 2.2rem 2rem;
+            border: 2px solid rgba(255, 210, 240, 0.8);
+            text-align: center;
+        }
+        .goodnight-special {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFDDB5, #FFA6C9, #E0B0FF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .sleep-poem {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin: 1.5rem 0;
+            font-weight: 500;
+        }
+        .signature-love {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            font-style: italic;
+            color: #FFD9B5;
+        }
+
+        /* navigation buttons */
+        .nav-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: #ffb7ca;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #2d1f3a;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .nav-btn:hover {
+            background: #ffa1bc;
+            transform: scale(1.02);
+        }
+        .nav-btn.prev {
+            background: #b9a0ff;
+        }
+        .nav-btn.prev:hover {
+            background: #a58be8;
+        }
+
+        /* page indicators */
+        .page-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #cbb5e5;
+            background: rgba(0,0,0,0.4);
+            width: fit-content;
+            margin: 0 auto;
+            padding: 4px 14px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            z-index: 20;
+        }
+
+        @media (max-width: 650px) {
+            .story-card h2 { font-size: 1.8rem; }
+            .story-card p { font-size: 1.1rem; }
+            .goodnight-special { font-size: 1.8rem; }
+            .sleep-poem { font-size: 1.1rem; }
+            .photo-item { width: 200px; }
+            .photo-item img { height: 160px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+</head>
+<body>
+
+<div class="pages-container">
+    <!-- PAGE 1 : Once upon a time + photos together -->
+    <div class="page page-1 active" id="page1">
+        <div class="story-card">
+            <h2>✨ Once upon a time... ✨</h2>
+            <p>in a quiet little world, two souls were about to cross paths.<br>
+            The universe had been planning something magical — something that would turn ordinary days into poetry.<br>
+            And then, you appeared.</p>
+            <div style="margin-top: 18px; font-size: 2rem;">💫 🌌 💫</div>
+        </div>
+        <div class="story-card" style="background: rgba(0,0,0,0.4);">
+            <h2>📸 Our beautiful moments</h2>
+            <p>every picture holds a whisper, every laugh a memory.</p>
+        </div>
+        <div class="photo-grid">
+            <div class="photo-item">
+                <img src="https://picsum.photos/id/64/400/300" alt="romantic memory" loading="lazy">
+                <div class="photo-caption">💖 sunset & us</div>
+            </div>
+            <div class="photo-item">
+                <img src="https://picsum.photos/id/96/400/300" alt="cute together" loading="lazy">
+                <div class="photo-caption">🌙 laughter under stars</div>
+            </div>
+            <div class="photo-item">
+                <img src="https://picsum.photos/id/169/400/300" alt="love walk" loading="lazy">
+                <div class="photo-caption">☁️ favorite day</div>
+            </div>
+        </div>
+        <div class="photo-note">💌 (replace with your own photos) 💌</div>
+        <div class="nav-buttons">
+            <button class="nav-btn next" data-next="2">💖 Next page 💖</button>
+        </div>
+    </div>
+
+    <!-- PAGE 2 : A person entered my life + animated moon & stars -->
+    <div class="page page-2" id="page2">
+        <div class="story-card">
+            <h2>💗 A person entered my life... 💗</h2>
+            <p>And everything changed. The stars shone brighter, the silence became comforting, and my heart finally found its home.<br>
+            You didn't just walk into my life — you became my favorite chapter, my peace, my daily joy.<br>
+            Every moment with you is a treasure I'll keep forever.</p>
+            <div style="margin: 18px 0; font-size: 2rem;">🌸 🫶 🌸</div>
+        </div>
+        <div class="story-card" style="background: rgba(0,0,0,0.3);">
+            <h2>🌙 beneath the same sky</h2>
+            <p>the moon remembers our secrets, and the stars write your name in the night.</p>
+        </div>
+        <div class="cosmic-playground" id="starfieldContainer">
+            <div class="moon-glow"></div>
+            <!-- stars injected via js -->
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn prev" data-prev="1">✨ Back ✨</button>
+            <button class="nav-btn next" data-next="3">🌙 Next → Good Night 🌙</button>
+        </div>
+    </div>
+
+    <!-- PAGE 3 : Final Good Night Shutraaa message -->
+    <div class="page page-3" id="page3">
+        <div class="final-box">
+            <div class="goodnight-special">
+                🌙 Good Night Shutraaa ❤️
+            </div>
+            <div class="sleep-poem">
+                Close your eyes.<br>
+                Forget today's worries.<br>
+                Tomorrow is waiting for you.<br>
+                <span style="display: inline-block; margin-top: 12px;">💤🌜✨</span>
+            </div>
+            <div class="signature-love">
+                Love,<br>Sanath
+            </div>
+            <button class="extra-little-button" id="sparkleButton" style="margin-top: 1.2rem; background:#ffb7ca; border:none; padding:6px 20px; border-radius:40px; font-weight:bold; cursor:pointer;">✨ send stardust ✨</button>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn prev" data-prev="2">💗 Read again 💗</button>
+        </div>
+    </div>
+</div>
+
+<div class="page-indicator" id="pageIndicator">Page 1 of 3</div>
+
+<script>
+    // ----- page navigation logic -----
+    const pages = document.querySelectorAll('.page');
+    let currentPage = 1;  // 1-indexed
+
+    function showPage(pageNumber) {
+        pages.forEach((page, idx) => {
+            const pageIdx = idx + 1;
+            if (pageIdx === pageNumber) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+        currentPage = pageNumber;
+        document.getElementById('pageIndicator').innerText = `Page ${currentPage} of 3`;
+
+        // special: when page 2 becomes active, reinitialize stars (avoid duplication)
+        if (pageNumber === 2) {
+            initStarsOnPage2();
+        }
+        // when page 3 becomes active, burst confetti to celebrate arrival
+        if (pageNumber === 3) {
+            celebrateFinalPage();
+        }
+    }
+
+    // attach navigation listeners to all next/prev buttons
+    document.querySelectorAll('.next').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const nextPage = parseInt(btn.getAttribute('data-next'));
+            if (nextPage && nextPage >= 1 && nextPage <= 3) {
+                showPage(nextPage);
+            }
+        });
+    });
+    document.querySelectorAll('.prev').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const prevPage = parseInt(btn.getAttribute('data-prev'));
+            if (prevPage && prevPage >= 1 && prevPage <= 3) {
+                showPage(prevPage);
+            }
+        });
+    });
+
+    // --- starfield generation for page 2 (only once, but ensure no duplicate stars)
+    let starsInitialized = false;
+    function initStarsOnPage2() {
+        const container = document.getElementById('starfieldContainer');
+        if (!container) return;
+        // if already has many stars, skip re-adding
+        if (starsInitialized && container.querySelectorAll('.star-twinkle').length > 10) return;
+        // remove existing stars that are not the moon
+        const existingStars = container.querySelectorAll('.star-twinkle');
+        existingStars.forEach(star => star.remove());
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star-twinkle');
+            const size = 1.5 + Math.random() * 4;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = 1.2 + Math.random() * 2 + 's';
+            star.style.backgroundColor = `rgb(255, ${180 + Math.random() * 75}, ${120 + Math.random() * 100})`;
+            container.appendChild(star);
+        }
+        for (let i = 0; i < 20; i++) {
+            const bigStar = document.createElement('div');
+            bigStar.classList.add('star-twinkle');
+            bigStar.style.width = '5px';
+            bigStar.style.height = '5px';
+            bigStar.style.left = Math.random() * 100 + '%';
+            bigStar.style.top = Math.random() * 100 + '%';
+            bigStar.style.animationDelay = Math.random() * 2 + 's';
+            container.appendChild(bigStar);
+        }
+        starsInitialized = true;
+    }
+
+    // celebration when reaching final page
+    let finalCelebrated = false;
+    function celebrateFinalPage() {
+        if (finalCelebrated) return;
+        finalCelebrated = true;
+        if (typeof canvasConfetti !== 'undefined') {
+            canvasConfetti({ particleCount: 150, spread: 85, origin: { y: 0.7 }, colors: ['#FFB7C5', '#FFE0B5', '#D6B0FF'] });
+            canvasConfetti({ particleCount: 60, spread: 120, origin: { y: 0.4, x: 0.2 } });
+            canvasConfetti({ particleCount: 60, spread: 120, origin: { y: 0.5, x: 0.8 } });
+            setTimeout(() => {
+                canvasConfetti({ particleCount: 100, spread: 55, origin: { y: 0.75 }, colors: ['#FFD9A5', '#FFB3D1'] });
+            }, 200);
+        } else {
+            createHearts(15);
+        }
+    }
+
+    function createHearts(count) {
+        for (let i = 0; i < count; i++) {
+            const heart = document.createElement('div');
+            heart.innerText = '💖';
+            heart.style.position = 'fixed';
+            heart.style.bottom = '30px';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.fontSize = '1.6rem';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '999';
+            heart.style.animation = 'heartFloat 1.5s ease-out forwards';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1500);
+        }
+    }
+
+    // sparkle button on final page
+    const sparkBtn = document.getElementById('sparkleButton');
+    if (sparkBtn) {
+        sparkBtn.addEventListener('click', () => {
+            if (typeof canvasConfetti !== 'undefined') {
+                canvasConfetti({ particleCount: 70, spread: 60, origin: { y: 0.75 }, colors: ['#FFC0CB', '#FFDFB0'] });
+            }
+            createHearts(8);
+        });
+    }
+
+    // add floating heart animation style (if not defined)
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
+        @keyframes heartFloat {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            100% { transform: translateY(-30px) rotate(10deg); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // initialize stars on page 2 if already visible? but page2 starts hidden, we init when shown.
+    // also trigger initial stars if somehow first load page2 active? but it's not active.
+    // preload stars for when user visits page2 later
+    window.addEventListener('load', () => {
+        // pre-create star container but not visible yet (just prepare)
+        initStarsOnPage2();
+    });
+</script>
+</body>
+</html>
